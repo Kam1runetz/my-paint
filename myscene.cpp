@@ -7,6 +7,8 @@
 MyScene::MyScene(QObject *parent) :
     QGraphicsScene(parent)
   , _fill_color(Qt::white)
+  ,_border_width(1)
+  ,_border_color(Qt::white)
   ,_current_item(nullptr)
   ,_start_pos()
 {
@@ -84,7 +86,6 @@ void MyScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
                                            0,
                                            0);
             item->setBrush(_fill_color);
-//            item->setPen(_border_color);
             QPen p(_border_color);
             p.setWidth(_border_width);
             item->setPen(p);
@@ -106,7 +107,6 @@ void MyScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
           _current_item = nullptr;
         }
       }
-//      _current_primitive = none;
       return;
   }
   QGraphicsScene::mousePressEvent(event);
@@ -137,12 +137,6 @@ void MyScene::keyPressEvent(QKeyEvent *event)
 
 void MyScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-
-//  QList<QGraphicsItem *> items = this->selectedItems();
-//  for (auto & item : items) {
-//    if (item) item->setZValue(item->zValue() + 1);
-//  }
-
   QGraphicsScene::mouseDoubleClickEvent(event);
 }
 

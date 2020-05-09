@@ -20,11 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->horizontalSlider, &QSlider::sliderMoved, ui->lb_brush_size,
             static_cast<void(QLabel::*)(int)> (&QLabel::setNum));
-
-
-//    _bg.addButton(ui->pb_rect, rectangle);
-//    _bg.addButton(ui->pb_ellipse, ellipse);
-//    _bg.addButton(ui->pb_brush, brush);
 }
 
 MainWindow::~MainWindow()
@@ -61,13 +56,17 @@ void MainWindow::on_report_action_triggered()
 
 void MainWindow::on_open_action_triggered()
 {
-    // todo: choice file
+    QFile file = QFileDialog::getOpenFileName();
+
+    if (file.exists()) {
+        QPixmap p(file.fileName());
+        _scene->addPixmap(p);
+    }
 }
 
 void MainWindow::on_save_action_triggered()
 {
-    // todo: save, open file, save to file
-
+    // todo: saving file
 }
 
 void MainWindow::on_exit_action_triggered()
@@ -92,7 +91,8 @@ void MainWindow::on_pb_color_clicked()
 
 void MainWindow::on_filling_scene_action_triggered()
 {
-    // todo: filling
+    QColor color = QColorDialog::getColor();
+    _scene->setBackgroundBrush(QBrush(color));
 }
 
 void MainWindow::on_pb_border_color_clicked()
