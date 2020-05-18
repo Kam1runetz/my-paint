@@ -3,13 +3,22 @@
 
 #include <QObject>
 #include <QGraphicsScene>
-#include "constants.h"
+#include <QRubberBand>
 
 class MyScene : public QGraphicsScene
 {
     Q_OBJECT
 public:
+
+    enum Primitives {
+        rectangle,
+        ellipse,
+        brush,
+        none
+    };
+
     MyScene(QObject *parent = nullptr);
+    ~MyScene();
     void set_color(QColor c);
     void set_primitive(Primitives p);
     void set_border_color(QColor c);
@@ -21,11 +30,9 @@ signals:
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-//     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-//     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-     void mousePressEvent(QGraphicsSceneMouseEvent *event);
-     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-     void keyPressEvent(QKeyEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 private:
      Primitives _current_primitive;
@@ -34,9 +41,7 @@ private:
      QColor _border_color;
      QGraphicsItem *_current_item;
      QPointF _start_pos;
-
-     // QGraphicsScene interface
-
+     QPainterPath _path;
 };
 
 #endif // MYSCENE_H

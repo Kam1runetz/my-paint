@@ -44,6 +44,10 @@ private slots:
 
     void on_horizontalSlider_sliderMoved(int position);
 
+    void on_pb_brush_clicked();
+
+    void on_pb_selector_clicked();
+
 private:
     Ui::MainWindow *ui;
     MyScene *_scene;

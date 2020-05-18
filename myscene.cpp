@@ -2,16 +2,28 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsRectItem>
 #include <QGraphicsEllipseItem>
+#include <QGraphicsPathItem>
 #include <QKeyEvent>
+#include <QRect>
+#include <QPainter>
 
 MyScene::MyScene(QObject *parent) :
     QGraphicsScene(parent)
   , _fill_color(Qt::white)
   ,_border_width(1)
-  ,_border_color(Qt::white)
+  ,_border_color(Qt::black)
   ,_current_item(nullptr)
   ,_start_pos()
+  ,_path()
+
 {
+    QGraphicsRectItem *item = new  QGraphicsRectItem(0, 0, 0, 0);
+    addItem(item);
+}
+
+MyScene::~MyScene() {
+   clear();
+   if (_current_item) delete _current_item;
 }
 
 void MyScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -43,14 +55,21 @@ void MyScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
           ellipse->setRect(rect);
           break;
         }
+        case QGraphicsPathItem::Type:
+        {
+           QGraphicsPathItem *path_item = (QGraphicsPathItem *) _current_item;
+           _path.lineTo(event->scenePos());
+           path_item->setPath(_path);
+           break;
+        }
 
-        default:
+        default: {
           break;
+        }
         }
         return;
       }
       QGraphicsScene::mouseMoveEvent(event);
-//    emit mouse_moved(event->scenePos().x(), event->scenePos().y());
 }
 
 void MyScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -95,8 +114,22 @@ void MyScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             break;
           }
 
-          default:
+          case brush:
+          {
+            QGraphicsPathItem *item = new QGraphicsPathItem();
+            QPen pen(_fill_color);
+            pen.setWidth(_border_width);
+            item->setPen(pen);
+            _path = QPainterPath{};
+            _path.moveTo(event->scenePos());
+            addItem(item);
+            _current_item = item;
             break;
+          }
+
+          default: {
+            break;
+          }
           }
          if (_current_item) _current_item->setFlag(QGraphicsItem::ItemIsSelectable);
          if (_current_item) _current_item->setFlag(QGraphicsItem::ItemIsMovable);
@@ -117,7 +150,6 @@ void MyScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
   if (_current_item) {
     _current_item = nullptr;
   }
-  QGraphicsScene::mouseReleaseEvent(event);
 }
 
 void MyScene::keyPressEvent(QKeyEvent *event)

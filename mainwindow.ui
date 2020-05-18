@@ -38,7 +38,7 @@
             <item row="0" column="1">
              <widget class="QPushButton" name="pb_ellipse">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -54,19 +54,24 @@
             <item row="0" column="0">
              <widget class="QPushButton" name="pb_rect">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
               <property name="text">
                <string>rect</string>
               </property>
-              <property name="icon">
-               <iconset theme="rectangle.png">
-                <normaloff>static/rectangle.png</normaloff>static/rectangle.png</iconset>
-              </property>
               <property name="checkable">
+               <bool>false</bool>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="default">
                <bool>false</bool>
               </property>
              </widget>
@@ -74,7 +79,7 @@
             <item row="1" column="0">
              <widget class="QPushButton" name="pb_brush">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -88,7 +93,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QPushButton" name="pb_something">
+             <widget class="QPushButton" name="pb_selector">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
@@ -96,7 +101,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>smth</string>
+               <string>selector</string>
               </property>
               <property name="checkable">
                <bool>false</bool>
@@ -161,7 +166,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Filling color</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -174,7 +179,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Border color</string>
+             <string/>
             </property>
            </widget>
           </item>

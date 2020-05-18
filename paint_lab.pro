@@ -21,7 +21,6 @@ SOURCES += \
     myscene.cpp
 
 HEADERS += \
-    constants.h \
     mainwindow.h \
     myscene.h
 
