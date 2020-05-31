@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QButtonGroup>
 #include <QMainWindow>
 #include "myscene.h"
 
@@ -51,7 +50,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     MyScene *_scene;
-    QButtonGroup _bg;
 
 };
 #endif // MAINWINDOW_H

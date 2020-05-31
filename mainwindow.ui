@@ -285,6 +285,16 @@
     <string>Залить полотно</string>
    </property>
   </action>
+  <action name="actiontmp">
+   <property name="text">
+    <string>tmp</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>hello world</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

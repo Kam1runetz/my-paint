@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QGraphicsScene>
-#include <QRubberBand>
 
 class MyScene : public QGraphicsScene
 {

@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QButtonGroup>
-#include "constants.h"
 #include <QDesktopServices>
 #include <QUrl>
 #include <QFileDialog>
@@ -13,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , _scene(new MyScene(this))
-    , _bg()
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(_scene);
