@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QGraphicsScene>
+#include <QPainterPath>
 
 class MyScene : public QGraphicsScene
 {
